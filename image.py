@@ -14,16 +14,12 @@ async def image_extractor(player):
 		pimg.save(f"./images/playerimgs/{player.name}.png")
 
 		player.img = pimg	
-	
-
 
 def frame_gen(players):
 	
 	with Image.open('./images/grid.png') as grid:
 
 		for player in players:
-			grid.paste(player.img,(13+176*player.posx,13+176*player.posy),player.img)				
+			grid.paste(player.img,(13+176*player.pos[0],13+176*player.pos[1]),player.img)				
 			grid.save('./images/grid1.png')
 		return 'images/grid1.png'
-
-
