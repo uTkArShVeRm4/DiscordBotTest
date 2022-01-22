@@ -1,9 +1,10 @@
 from typing import Optional
-
+import image
 import discord
 from discord import Member, Embed
 from discord.ext import commands
 import game
+from PIL import Image
 
 token = open("../token.txt", "r").read()
 client = discord.Client()
@@ -20,17 +21,9 @@ async def test(ctx, arg: Optional[Member]):
 	await ctx.send('test command working')
 	target = arg or ctx.author
 	print(target)
-	embed = Embed(title="information", description=":green_circle:"*10)
-	embed.set_thumbnail(url=target.avatar_url)
+	embed = Embed(title="test", description="this works")
+	embed.set_thumbnail(url=target.display_avatar)
 	await ctx.send(embed=embed)
-
-@client.command()
-async def sg(ctx):
-	player1 = game.Player(ctx.author)
-	await ctx.send(player1.name)
-	await ctx.send(player1.hp)
-	await ctx.send(player1.member)
-
-
+	image.frame_gen()
 
 client.run(token)

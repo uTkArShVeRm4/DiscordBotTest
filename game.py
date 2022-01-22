@@ -6,6 +6,10 @@ class Player():
 		self.hp = 10
 		self.member = mem
 		self.name = mem.name
+		self.posx = 0
+		self.posy = 0
+		self.avatar = mem.display_avatar
+		self.img = None
 
 	def dis_hp(self):
 		#current_hp is just for displaying in discord
